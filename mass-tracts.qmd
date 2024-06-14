@@ -9,6 +9,17 @@ format: html
 #| label: setup
 library(tidyverse)
 
-x <- read_csv("mass-tracts.csv", show_col_types = FALSE)
+x <- read_csv("mass-tracts.csv", 
+              show_col_types = FALSE)
 ```
+```{r}
+#| echo: false
+#| message: false
+
+x |> drop_na() |> 
+  ggplot(aes(x=med_income, y=race, fill=race)) +
+  labs(title="Median Income for Massachusetts Census Tracts", subtitle="The richest tracts are White", x="Median Income", caption="The race of each tract is determined by the most numberous racial group \npresent in that tract. Data from the American Community Survey 2022.") +
+  scale_x_continuous(labels=scales::dollar_format()) + geom_violin(alpha=0.4) + theme(plot.title=element_text(face = "bold", size=18)) 
+```
+
 
