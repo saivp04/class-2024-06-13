@@ -1,0 +1,14 @@
+---
+title: "Median Income for Massachusetts Census Tracts"
+author: "Sai Pendekanti"
+format: html
+---
+```{r}
+#| echo: false
+#| message: false
+#| label: setup
+library(tidyverse)
+
+x <- read_csv("mass-tracts.csv", show_col_types = FALSE)
+```
+
